@@ -2,8 +2,10 @@ package applicantion.implicitConvert
 
 package applicantion.implicitConvert
 
+import java.io.File
+
 import scala.io.Source
-import scala.sys.process.processInternal.File
+
 
 /**
   * 隐式转换应用,让File具备RichFile中的read能力

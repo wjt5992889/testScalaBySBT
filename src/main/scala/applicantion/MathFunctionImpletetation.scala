@@ -17,7 +17,7 @@ object MathFunctionImpletetation {
   }
 
   def sum2(f:Int=>Int): (Int,Int)=>Int={
-    def sum3(a:Int,b:Int)=sum(a,b,f);
+    def sum3(a:Int,b:Int)=sum(a,b,f)
     sum3
   }
 
