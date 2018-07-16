@@ -1,7 +1,6 @@
 package contest
 
-import contest.Solution.numJewelsInStones
-
+import contest.Solution._
 /**
   * //////////////////////
   * ///   2018-07-11   ///
@@ -38,11 +37,20 @@ import contest.Solution.numJewelsInStones
   * }
   */
 object JewelCount extends App{
+  import scala.util.Properties
+  Properties.setProp("scala.time","true")
 
-  println(numJewelsInStones("aA","aAAbbbb"))
-  println(numJewelsInStones("z","ZZ"))
+//  println(numJewelsInStones("aA","aAAbbbb"))
+//  342ms 376ms
+//  println(numJewelsInStones("aA","aAAbbbbbbbbbbbbbbbbbbbbbb"))
+//  452ms 506ms
+//  println(numJewelsInStonesByPattern("aA","aAAbbbb"))
+//  351ms 448ms
+//  println(numJewelsInStonesByLoop("aA","aAAbbbb"))
 
+  println(numJewelsInStonesByPattern2("aA","aAAbbbbbbbbbbbbbbbbbbbbbb"))
 
+//  println("aAAbbbb".mkString("|"))
 }
 
 object Solution  {
@@ -50,5 +58,28 @@ object Solution  {
   def numJewelsInStones(J: String, S: String): Int = {
     S.count(J.contains(_))
   }
+
+  def numJewelsInStonesByPattern(J: String, S: String): Int = {
+    val pattern = J.toSet.mkString("|").r
+    (pattern findAllIn S).size
+//    pattern.findAllIn(S).size
+  }
+
+  def numJewelsInStonesByPattern2(J: String, S: String): Int = {
+    J.toSet
+      .mkString("|")
+      .r
+      .findAllIn(S)
+      .size
+  }
+
+  def numJewelsInStonesByLoop(J: String, S: String): Int = {
+
+    var result = 0
+    for(i <- J;j <- S if i == j)
+      result += 1
+    result
+  }
+
 
 }
