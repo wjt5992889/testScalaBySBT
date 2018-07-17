@@ -25,27 +25,38 @@ object RobotMove {
 
   def main(args: Array[String]): Unit = {
     println(judgeCircle("RLLU"))
-
   }
 
   def judgeCircle(moves: String): Boolean = {
 
-    @tailrec
-    def move(moves: String,a:Tuple2[Int,Int]): (Int,Int) ={
-      if(moves.length == 0) a
-      else {
-        val point = moves.head match{
-          case 'R' => (a._1 + 1,a._2)
-          case 'L' => (a._1 - 1,a._2)
-          case 'R' => (a._1,a._2 + 1)
-          case 'L' => (a._1,a._2 - 1)
-          case _ => a
-        }
-        move(moves.tail.toString,point)
+//    @tailrec
+//    def move(moves: String,a:Tuple2[Int,Int]): (Int,Int) ={
+//      if(moves.length == 0) a
+//      else {
+//        val point = moves.head match{
+//          case 'R' => (a._1 + 1,a._2)
+//          case 'L' => (a._1 - 1,a._2)
+//          case 'R' => (a._1,a._2 + 1)
+//          case 'L' => (a._1,a._2 - 1)
+//          case _ => a
+//        }
+//        move(moves.tail.toString,point)
+//      }
+//    }
+//
+//    move(moves,(0,0))==(0,0)
+
+    val point = moves.foldLeft((0,0)){
+      (result,a) => a match {
+        case 'R' => (result._1 + 1,result._2)
+        case 'L' => (result._1 - 1,result._2)
+        case 'R' => (result._1,result._2 + 1)
+        case 'L' => (result._1,result._2 - 1)
+        case _ => result
       }
     }
 
-    move(moves,(0,0))==(0,0)
+    point == (0,0)
   }
 
 }
