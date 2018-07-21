@@ -3,6 +3,9 @@ package applicantion
 object MathFunctionImpletetation {
 
   def main(args: Array[String]): Unit = {
+
+    hello("111")
+
     //sum a,b (F(n))
     sum(1,10,(x:Int)=>x*2)
 
@@ -11,9 +14,12 @@ object MathFunctionImpletetation {
     f1(1,10)
   }
 
+  def hello(name:String): Unit ={
+    println(s"hello ${name}")
+  }
   def sum(a:Int,b:Int,f:Int => Int):Int={
     if(a>b) 0
-    else f(a) + sum(a-1,b,f)
+    else f(a) + sum(a+1,b,f)
   }
 
   def sum2(f:Int=>Int): (Int,Int)=>Int={

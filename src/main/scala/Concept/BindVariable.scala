@@ -1,6 +1,5 @@
 package Concept
 
-import scala.collection.mutable
 
 object BindVariable {
 
@@ -12,16 +11,16 @@ object BindVariable {
     val stack = (1,23,4)
     var queue = (1,2,3,4)
 
-    array match {
-      case mutable.Stack(head, tails @ _*) => (head, tails)
-    }
-
-    stack match {
-      case mutable.Stack(head, tails @ _*) => (head, tails)
-    }
-
-    queue match {
-      case mutable.Stack(head, tails @ _*) => (head, tails)
-    }
+//    array match {
+//      case mutable.Stack(head, tails @ _*) => (head, tails)
+//    }
+//
+//    stack match {
+//      case mutable.Stack(head, tails @ _*) => (head, tails)
+//    }
+//
+//    queue match {
+//      case mutable.Stack(head, tails @ _*) => (head, tails)
+//    }
   }
 }

@@ -11,13 +11,22 @@ object FunctionCurrying {
     * @return
     */
   def func(a:Int,b:Int,c:Int,d:Int)=1
-  def func1(a:Int)(b:Int)(c:Int)(d:Int)=1
+  def func1(a:Int)(b:Int)(c:Int)(d:Int)=a+b+c+d
+
+  //1+b+c+d
+  def funca = func1(1)_
+  //1+2+c+d
+  def funcab = func1(1)(2)_
+  //1+2+3+d
+  def funcabc = func1(1)(2)(3)_
+
   def func2=(a:Int)=>(b:Int)=>(c:Int)=>(d:Int)=>1
 
 //  def sum(a:Int):(Int,Int)=>Int={
 //    def sumb(b:Int,c:Int)=a+b+c
 //    sumb
 //  }
+
   def sum(a:Int):Int=>(Int=>Int)={
     def sumb(b:Int):Int=>Int={
       def sumc(c:Int)={
